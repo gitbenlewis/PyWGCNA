@@ -3280,6 +3280,7 @@ class WGCNA(GeneExp):
                                  organism=self.species,
                                  outdir=f"{self.outputPath}figures/{self.name}_{type}/{file_name}",
                                  cutoff=p_value,
+                                 background=self.geneExpr.var.gene_name.astype(str).values.tolist(),# use only genes present in dataset a background to increase power
                                  **kwargs)
                 dotplot(enr.res2d,
                         title=f"Gene ontology in {moduleName} module",
