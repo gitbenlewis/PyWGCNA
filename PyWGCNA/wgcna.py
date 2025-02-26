@@ -2777,8 +2777,8 @@ class WGCNA(GeneExp):
                 continue
             data.iloc[:, i] = data.iloc[:, i].astype(str)
             if len(np.unique(data.iloc[:, i])) == 2:
-                datTraits[data.columns[i]] = data.iloc[:, i]
                 org = np.unique(data.iloc[:, i]).tolist()
+                datTraits[org[-1]] = data.iloc[:, i] # fix column name to be the last value (this is the relationship used in the heatmap)
                 rep = list(range(len(org)))
                 datTraits.replace(to_replace=org, value=rep,
                                   inplace=True)
